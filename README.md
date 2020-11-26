@@ -11,7 +11,7 @@
 | last_name_kana | string     |  null: false |
 | birthday       | date       |  null: false |
 | email          | string     |  null: false, unique:true |
-| password       | string     |  null:false  |
+| encrypted_password       | string     |  null:false  |
 
 ### Association
 
@@ -20,41 +20,29 @@
 
 ## items テーブル
 
-| Column       | Type       | Options     |
-| ------------ | -----------| ------------|
-| item_name    | string     | null: false |
-| user_id      | string     | null: false |
-| introduction | text       | null: false |
-| category_id  | integer    | null: false |
-| condition_id | integer    | null: false |
-| price        | integer    | null: false |
+| Column       | Type       | Options                        |
+| ------------ | -----------| -------------------------------|
+| item_name    | string     | null: false                    |
+| user_id      | references | null: false, foreign_key: true |
+| introduction | text       | null: false                    |
+| category_id  | integer    | null: false                    |
+| condition_id | integer    | null: false                    |
+| price        | integer    | null: false                    |
 
 ### Association
 
 - belongs_to :user
 - has_one    :log
 
-## users_items テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | -------------------------------|
-| user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
-
 ## logs テーブル
 
 | Column | Type       | Options                        |
-| ------ | ---------- | -------------------------------|
-| user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
-| cost   | text       | null: false                    |
-| date   | text       | null: false                    |
-
+| ------------- | ---------- | -------------------------------|
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
+| cost          | text       | null: false                    |
+| destination   | text       | null: false                    |
+| date          | text       | null: false                    |
 ### Association
 
 - belongs_to :user
@@ -69,6 +57,7 @@
 | prefecture_id  | integer    | null: false                    |
 | city           | string     | null: false                    |
 | house_number   | string     | null: false                    |
+| building_number| string     | null: false                    |
 | tell           | string     | null: false                    |
 | log            | references | null: false, foreign_key: true |
 
