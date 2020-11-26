@@ -23,7 +23,7 @@
 | Column          | Type       | Options                        |
 | --------------- | -----------| -------------------------------|
 | item_name       | string     | null: false                    |
-| user_id         | references | null: false, foreign_key: true |
+| user            | references | null: false, foreign_key: true |
 | introduction    | text       | null: false                    |
 | category_id     | integer    | null: false                    |
 | condition_id    | integer    | null: false                    |
